@@ -1,0 +1,473 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "wo-defaults",
+        "description": "For setting default values in WO",
+        "version": "1.0.0",
+        "x-ibm-application-name": "User default settings",
+        "x-ibm-application-id": "default-app",
+        "x-ibm-annotations": "true",
+        "x-ibm-skill-type": "imported",
+        "x-ibm-application-icon": "<svg width=\"44\" height=\"44\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" overflow=\"hidden\"><defs><clipPath id=\"clip0\"><rect x=\"592\" y=\"312\" width=\"44\" height=\"44\"/></clipPath><clipPath id=\"clip1\"><rect x=\"592\" y=\"312\" width=\"43\" height=\"43\"/></clipPath><clipPath id=\"clip2\"><rect x=\"592\" y=\"312\" width=\"43\" height=\"43\"/></clipPath><clipPath id=\"clip3\"><rect x=\"592\" y=\"312\" width=\"43\" height=\"43\"/></clipPath></defs><g clip-path=\"url(#clip0)\" transform=\"translate(-592 -312)\"><g clip-path=\"url(#clip1)\"><g clip-path=\"url(#clip2)\"><g clip-path=\"url(#clip3)\"><path d=\"M615.74 315.135C615.74 315.878 615.138 316.479 614.396 316.479 613.654 316.479 613.052 315.878 613.052 315.135 613.052 314.393 613.654 313.792 614.396 313.792 615.138 313.792 615.74 314.393 615.74 315.135Z\" fill=\"#000000\" fill-rule=\"nonzero\" fill-opacity=\"1\"/><path d=\"M617.979 319.167C617.979 319.909 617.378 320.51 616.635 320.51 615.893 320.51 615.292 319.909 615.292 319.167 615.292 318.425 615.893 317.823 616.635 317.823 617.378 317.823 617.979 318.425 617.979 319.167Z\" fill=\"#000000\" fill-rule=\"nonzero\" fill-opacity=\"1\"/><path d=\"M613.052 318.271C613.052 319.013 612.45 319.615 611.708 319.615 610.966 319.615 610.365 319.013 610.365 318.271 610.365 317.529 610.966 316.927 611.708 316.927 612.45 316.927 613.052 317.529 613.052 318.271Z\" fill=\"#000000\" fill-rule=\"nonzero\" fill-opacity=\"1\"/><path d=\"M614.396 323.198C614.396 324.187 613.594 324.99 612.604 324.99 611.615 324.99 610.812 324.187 610.812 323.198 610.812 322.208 611.615 321.406 612.604 321.406 613.594 321.406 614.396 322.208 614.396 323.198Z\" fill=\"#000000\" fill-rule=\"nonzero\" fill-opacity=\"1\"/><path d=\"M622.234 349.446 617.083 337.8 617.083 329.917C617.083 328.304 618.382 327.632 618.427 327.587 618.875 327.364 619.054 326.826 618.83 326.378 618.651 326.065 618.338 325.885 617.979 325.885L609.021 325.885C608.662 325.885 608.349 326.065 608.17 326.378 607.946 326.826 608.125 327.364 608.573 327.587 608.573 327.587 609.917 328.304 609.917 329.917L609.917 337.8 604.766 349.446C604.407 350.297 604.497 351.237 604.99 351.999 605.482 352.76 606.333 353.208 607.229 353.208L619.771 353.208C620.667 353.208 621.518 352.76 622.01 351.999 622.503 351.237 622.593 350.297 622.234 349.446ZM615.292 329.917 615.292 331.708 611.708 331.708 611.708 329.917C611.708 328.976 611.44 328.259 611.126 327.677L615.919 327.677C615.56 328.259 615.292 328.976 615.292 329.917Z\" fill=\"#000000\" fill-rule=\"nonzero\" fill-opacity=\"1\"/></g></g></g></g></svg>"
+    },
+    "servers": [
+        {
+            "url": "https://b25yxaezee.execute-api.us-east-2.amazonaws.com/"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/defaults/wx-thank-you-note": {
+            "post": {
+                "summary": "Generate Thank you note (default)",
+                "description": "Instructions for creating a Thank you Note",
+                "operationId": "jmTyNoteInputsPost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/wx-thank-you-note"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/wx-thank-you-note"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/wx-welcome-message-slack": {
+            "post": {
+                "summary": "Generate message for Slack",
+                "description": "Defaults for creating messages and sending to slack channel",
+                "operationId": "wxWelcomeMessageRecipiePost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/wx-welcome-message-slack"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/wx-welcome-message-slack"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/wx-job-description": {
+            "post": {
+                "summary": "Generate Job description (default)",
+                "description": "Instructions for creating job descriptions",
+                "operationId": "jmWxJobDescriptionPost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/wx-job-description"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/wx-job-description"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/wx-welcome-message": {
+            "post": {
+                "summary": "Generate welcome message (default)",
+                "description": "Instructions for creating welcome messages",
+                "operationId": "jm2WxWelcomeMessagePost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/wx-welcome-message"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/wx-welcome-message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/box": {
+            "post": {
+                "summary": "Box skill defaults",
+                "description": "Box file and folder IDs",
+                "operationId": "jmBoxDefaultsPost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/box"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/box"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/email": {
+            "post": {
+                "summary": "Email skill defaults",
+                "description": "Default email recipients, subject and body",
+                "operationId": "jmEmailDefaultsPost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/email"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/defaults/trello": {
+            "post": {
+                "summary": "Trello skill defaults",
+                "description": "Default trello Org ID, Board ID etc",
+                "operationId": "jmTrelloDefaultsPost",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/trello"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/trello"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "wx-welcome-message-slack": {
+                "type": "object",
+                "properties": {
+                    "team_slack_channel": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "C05HNG50F8E"
+                    },
+                    "parent_channel_type": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "channel"
+                    },
+                    "welcome_message_input": {
+                        "type": "string",
+                        "title": "New message",
+                        "description": "Watsonx input for generating a message",
+                        "x-ibm-multiline": "true",
+                        "default": "Write a test message to post into Slack"
+                    }
+                }
+            },
+            "wx-thank-you-note": {
+                "type": "object",
+                "properties": {
+                    "hackathon_thank_you_note": {
+                        "type": "string",
+                        "title": "Watson Orhcestrate Challenge Thank you note",
+                        "description": "Watsonx input for generating a thank you note to participants of the WO Challenge",
+                        "x-ibm-multiline": "true",
+                        "default": "Write a thank you note for attending a workshop.\n\nAttendees: interns\nTopic: hackathon, AI\nTone: energetic\n\n"
+                    },
+                    "interview_thank_you_note": {
+                        "type": "string",
+                        "title": "Recent interview Thank you note",
+                        "description": "Watsonx input for generating a thank you note for an interviewee",
+                        "x-ibm-multiline": "true",
+                        "default": "Write a thank you note for attending an interview.\n\nAttendees: candidate\nTopic: job interview, AI\nTone: professional\n\n"
+                    }
+                }
+            },
+            "wx-welcome-message": {
+                "type": "object",
+                "properties": {
+                    "new_hire_welcome_note": {
+                        "type": "string",
+                        "title": "New Hire Welcome message",
+                        "description": "Watsonx input for generating a welcome message for a new hire",
+                        "x-ibm-multiline": "true",
+                        "default": "Write a welcome message for a new hire joining our company.\n\nCompany: Acme AI Automation\nTopic: first day, AI\nTone: energetic\n\n"
+                    },
+                    "new_customer_welcome_note": {
+                        "type": "string",
+                        "title": "New Customer Welcome message",
+                        "description": "Watsonx input for generating a welcome message for a new customer",
+                        "x-ibm-multiline": "true",
+                        "default": "Write a welcome message for a new customer.\n\nCompany: Acme AI Automation\nTopic: new subscription, AI\nTone: professional\n\n"
+                    }
+                }
+            },
+            "wx-job-description": {
+                "type": "object",
+                "properties": {
+                    "product_manager": {
+                        "type": "string",
+                        "title": "Product Manager",
+                        "description": "Watsonx input for generating a job description",
+                        "x-ibm-multiline": "true",
+                        "default": "Generate a 10 sentence job description for a senior technical product manager with the following characteristics:\nCompany - IBM\nlocation - London\n Education - Technical Degree\n Experience - managing teams, delivering products on time\n\n"
+                    },
+                    "ux_designer": {
+                        "type": "string",
+                        "title": "UX designer",
+                        "description": "Watsonx input for generating a job description",
+                        "x-ibm-multiline": "true",
+                        "default": "Generate a 10 sentence job description for a user experience designer with the following characteristics:\nCompany - IBM\nlocation - London\nEducation - Bachelors in User Experience Design\nExperience - User experience for consumer and business applications\nExperience - Data, analytics and Automation\nRequired Skills - Ability to understand business metrics and translate company goals and objectives into digital experiences; Excellent interpersonal and communication skills to communicate ideas to developers; Knowledge of industry tools like Adobe, Zeplin, OmniGraffle, Illustrator and Sketch;Problem-solving skills to determine solutions to user interface challenges; Multi-tasking and time management skills, with the ability to prioritize tasks; Analytical mind with business acumen; Ability to work both independently and in a team; Attention to detail and mastery of information design\n\n"
+                    },
+                    "filename_list": {
+                        "type": "string",
+                        "title": "Select filename",
+                        "description": "File name for new content",
+                        "enum": [
+                            "Product Manager",
+                            "Senior Product Manager",
+                            "Principle Product Manager",
+                            "User Experience Designer",
+                            "Senior User Experience Designer",
+                            "Principle User Experience Designer"
+                         ],
+                         "x-ibm-list": "dropdown"
+                    }
+                }
+            },
+            "box": {
+                "type": "object",
+                "properties": {
+                    "email_template_file": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "ADD-FILE-ID-HERE"
+                    },
+                    "email_template_folder": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "ADD-FOLDER-ID-HERE"
+                    },
+                    "job_description_folder": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "ADD-FOLDER-ID-HERE"
+                    },
+                    "new_leads_folder": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "ADD-FOLDER-ID-HERE"
+                    },
+                    "top_level_folder": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "0"
+                    },
+                    "file_name": {
+                        "type": "string",
+                        "x-ibm-show": true,
+                        "default": "New File"
+                    }
+                }
+            },
+            "email": {
+                "type": "object",
+                "properties": {
+                    "selected_email_recipient": {
+                        "type": "string",
+                        "title": "Email recipient",
+                        "description": "Recipient for email skill",
+                        "enum": [
+                            "odrodrig@us.ibm.com",
+                            "ann.umberhocker@ibm.com",
+                            "carlos.toledo@ibm.com",
+                            "kevin.silva@ibm.com",
+                            "cole.potter@ibm.com",
+                            "markstevens@us.ibm.com",
+                            "gregx@us.ibm.com",
+                            "jmachter@us.ibm.com"
+                         ],
+                         "x-ibm-list": "dropdown",
+                         "x-ibm-show": true
+                    },
+                    "selected_email_bcc": {
+                        "type": "string",
+                        "title": "BCC recipient",
+                        "description": "BCC recipient for email",
+                        "enum": [
+                            "odrodrig@us.ibm.com",
+                            "ann.umberhocker@ibm.com",
+                            "carlos.toledo@ibm.com",
+                            "kevin.silva@ibm.com",
+                            "cole.potter@ibm.com",
+                            "markstevens@us.ibm.com",
+                            "gregx@us.ibm.com",
+                            "jmachter@us.ibm.com"
+                         ],
+                         "x-ibm-list": "multiselect"
+                    },
+                    "team_email": {
+                        "type": "string",
+                        "default": "ADD-EMAIL-HERE"
+                    },
+                    "manager_email": {
+                        "type": "string",
+                        "default": "ADD-EMAIL-HERE"
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "default": "ADD-EMAIL-HERE"
+                    },
+                    "email_subject_important": {
+                        "type": "string",
+                        "default": "Important message for you"
+                    },
+                    "email_subject_reminder": {
+                        "type": "string",
+                        "default": "Reminder notification"
+                    },
+                    "email_subject_urgent": {
+                        "type": "string",
+                        "default": "URGENT message for you"
+                    }
+                }
+            },
+            "trello": {
+                "type": "object",
+                "properties": {
+                    "selected_organization": {
+                        "type": "string",
+                        "title": "Organization",
+                        "description": "Org selected from list",
+                        "default": "5f1f43a15c021f8c25d8dbf3",
+                        "enum": [
+                            "5f1f43a15c021f8c25d8dbf3"
+                         ],
+                         "x-ibm-list": "dropdown"
+                    },
+                    "selected_board": {
+                        "type": "string",
+                        "title": "Board",
+                        "description": "Board selected from list",
+                        "default": "64d3dd19ed7051ea41cb05a5",
+                        "enum": [
+                            "64d3dd19ed7051ea41cb05a5",
+                            "ADD_BOARD_ID_2_HERE", 
+                            "ADD_BOARD_ID_3_HERE"
+                         ],
+                         "x-ibm-list": "dropdown"
+                    },
+                    "selected_list": {
+                        "type": "string",
+                        "title": "List",
+                        "description": "List ID selected from list",
+                        "default": "64d3dd324a588bb8500c9688",
+                        "enum": [
+                            "64d3dd324a588bb8500c9688",
+                            "ADD_LIST_ID_2_HERE", 
+                            "ADD_LIST_ID_3_HERE"
+                         ],
+                         "x-ibm-list": "dropdown"
+                    },
+                    "selected_card": {
+                        "type": "string",
+                        "title": "Card",
+                        "description": "Card ID selected from list",
+                        "default": "64d3dd397b9699bc721e4196",
+                        "enum": [
+                            "64d3dd397b9699bc721e4196",
+                            "64220dd90aaff7e1cb71ab7f", 
+                            "6442955a27fb5478b2324162"
+                         ],
+                         "x-ibm-list": "dropdown"
+                        }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization"
+            }
+        }
+    }
+}
