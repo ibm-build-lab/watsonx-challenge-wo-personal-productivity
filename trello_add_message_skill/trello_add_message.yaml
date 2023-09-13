@@ -1,1 +1,659 @@
-placeholder
+openapi: 3.0.0
+info:
+  title: Trello Custom
+  version: 0.0.1
+  description: test
+servers:
+  - url: >-
+      https://application-31.15y2g0erzr2b.us-east.codeengine.appdomain.cloud/trello/
+components:
+  securitySchemes:
+    APIToken:
+      in: query
+      name: token
+      type: apiKey
+  schemas:
+    APIKey:
+      type: string
+      pattern: ^[0-9a-fA-F]{32}$
+      example: 0471642aefef5fa1fa76530ce1ba4c85
+    APIToken:
+      type: string
+      example: 9eb76d9a9d02b8dd40c2f3e5df18556c831d4d1fadbe2c45f8310e6c93b5c548
+    ActionFields:
+      type: string
+      enum:
+        - id
+        - idMemberCreator
+        - data
+        - type
+        - date
+        - limits
+        - display
+        - memberCreator
+    Action:
+      type: object
+      properties:
+        id:
+          type: string
+          $ref: '#/components/schemas/TrelloID'
+        idMemberCreator:
+          type: string
+          $ref: '#/components/schemas/TrelloID'
+        data:
+          type: object
+          properties:
+            text:
+              type: string
+              example: Can never go wrong with bowie
+            card:
+              type: object
+              properties:
+                id:
+                  type: string
+                  $ref: '#/components/schemas/TrelloID'
+                name:
+                  type: string
+                  example: Bowie
+                idShort:
+                  type: integer
+                  example: 7
+                shortLink:
+                  type: string
+                  example: 3CsPkqOF
+            board:
+              type: object
+              properties:
+                id:
+                  type: string
+                  $ref: '#/components/schemas/TrelloID'
+                name:
+                  type: string
+                  example: Mullets
+                shortLink:
+                  type: string
+                  example: 3CsPkqOF
+            list:
+              type: object
+              properties:
+                id:
+                  type: string
+                  $ref: '#/components/schemas/TrelloID'
+                name:
+                  type: string
+                  example: Amazing
+        type:
+          type: string
+          example: commentCard
+        date:
+          type: string
+          format: date-time
+          example: '2020-03-09T19:41:51.396Z'
+        limits:
+          type: object
+          properties:
+            reactions:
+              type: object
+              properties:
+                perAction:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: ok
+                    disableAt:
+                      type: number
+                      example: 1000
+                    warnAt:
+                      type: number
+                      example: 900
+                uniquePerAction:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: ok
+                    disableAt:
+                      type: number
+                      example: 1000
+                    warnAt:
+                      type: number
+                      example: 900
+        display:
+          type: object
+          properties:
+            translationKey:
+              type: string
+              example: action_comment_on_card
+            entities:
+              type: object
+              properties:
+                contextOn:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: translatable
+                    translationKey:
+                      type: string
+                      example: action_on
+                    hideIfContext:
+                      type: boolean
+                    idContext:
+                      type: string
+                      $ref: '#/components/schemas/TrelloID'
+                card:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: card
+                    hideIfContext:
+                      type: boolean
+                    id:
+                      type: string
+                      $ref: '#/components/schemas/TrelloID'
+                    shortLink:
+                      type: string
+                      example: 3CsPkqOF
+                    text:
+                      type: string
+                      example: Bowie
+                comment:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: comment
+                    text:
+                      type: string
+                      example: Can never go wrong with bowie
+                memberCreator:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: member
+                    id:
+                      $ref: '#/components/schemas/TrelloID'
+                    username:
+                      type: string
+                      example: bobloblaw
+                    text:
+                      type: string
+                      example: Bob Loblaw (World)
+        memberCreator:
+          type: object
+          properties:
+            id:
+              type: string
+              $ref: '#/components/schemas/TrelloID'
+              example: 5b02e7f4e1facdc393169f9d
+            activityBlocked:
+              type: boolean
+              example: false
+            avatarHash:
+              type: string
+              example: db2adf80c2e6c26b76e1f10400eb4c45
+            avatarUrl:
+              type: string
+              format: url
+              example: >-
+                https://trello-members.s3.amazonaws.com/5b02e7f4e1facdc393169f9d/db2adf80c2e6c26b76e1f10400eb4c45
+            fullName:
+              type: string
+              example: Bob Loblaw (Trello)
+            idMemberReferrer:
+              type: string
+              $ref: '#/components/schemas/TrelloID'
+              nullable: true
+              example: null
+            initials:
+              type: string
+              example: BL
+            username:
+              type: string
+              example: bobloblaw
+    AttachmentFields:
+      type: string
+      enum:
+        - id
+        - bytes
+        - date
+        - edgeColor
+        - idMember
+        - isUpload
+        - mimeType
+        - name
+        - previews
+        - url
+        - pos
+    TrelloID:
+      type: string
+      pattern: ^[0-9a-fA-F]{24}$
+      example: 5abbe4b7ddc1b351ef961414
+    LimitsObject:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+            - warning
+        disableAt:
+          type: number
+          example: 36000
+        warnAt:
+          type: number
+          example: 32400
+    Limits:
+      type: object
+      properties:
+        attachments:
+          type: object
+          properties:
+            perBoard:
+              type: object
+              $ref: '#/components/schemas/LimitsObject'
+    OrganizationFields:
+      type: string
+      enum:
+        - id
+        - name
+    Organization:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+    PendingOrganizations:
+      type: object
+      properties:
+        id:
+          type: string
+          $ref: '#/components/schemas/TrelloID'
+          example: 617ac9070293e6612650e0ca
+        idMember:
+          $ref: '#/components/schemas/TrelloID'
+          example: 5589c3ea49b40cedc28cf70e
+        memberRequestor:
+          type: object
+          properties:
+            id:
+              type: string
+              $ref: '#/components/schemas/TrelloID'
+              example: 59cd149051aa57a706962996
+            fullName:
+              type: string
+              example: Bob Loblaw (Trello)
+        date:
+          type: string
+          format: date
+          example: '2018-10-17T19:10:14.808Z'
+        displayName:
+          type: string
+          example: Organization Name
+        membershipCount:
+          type: number
+          example: 2
+        logoUrl:
+          type: string
+          nullable: true
+          example: null
+        transferability:
+          type: object
+          properties:
+            transferrable:
+              type: boolean
+              example: true
+            newBillableMembers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/TrelloID'
+                    example: 5ab10be237846c43015f1091
+                  fullName:
+                    type: string
+                    example: Bob Loblaw
+                  username:
+                    type: string
+                    example: bobloblaw
+                  initials:
+                    type: string
+                    example: BL
+                  avatarHash:
+                    type: string
+                    example: fc8faaaee46666a4eb8b626c08933e16
+            restrictedMembers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/TrelloID'
+                    example: 5ab10be237846c43015f1091
+                  fullName:
+                    type: string
+                    example: Bob Loblaw
+                  username:
+                    type: string
+                    example: bobloblaw
+                  initials:
+                    type: string
+                    example: BL
+                  avatarHash:
+                    type: string
+                    example: fc8faaaee46666a4eb8b626c08933e16
+    Plugin:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+    PluginData:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+          example: 5c487f39294cab6ac1d6b305
+        idPlugin:
+          $ref: '#/components/schemas/TrelloID'
+          example: 55a5d915446f517774210003
+        scope:
+          type: string
+          enum:
+            - member
+            - board
+            - organization
+            - card
+          example: organization
+        idModel:
+          $ref: '#/components/schemas/TrelloID'
+          example: 586e8d7b1af892b26d5b76b1
+        value:
+          type: string
+          example: >-
+            {"token":"S=s458:U=bda7cda:E=16fd2e21f55:C=1687b30f2c0:P=185:A=it-team-0604:V=2:H=3b0f3bac9c2a2af766202ebb9530a4a5"}
+        access:
+          type: string
+          enum:
+            - private
+            - shared
+          example: private
+    PluginListing:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+          example: 5a7cd2f8f99c517f58da1579
+        name:
+          type: string
+          example: Attachment Section Example
+        locale:
+          type: string
+          example: en-US
+        description:
+          type: string
+          example: The [Glitch](https://glitch.com) Power-Up allows you to...
+        overview:
+          type: string
+          example: ''
+    Prefs:
+      type: object
+      properties:
+        permissionLevel:
+          type: string
+          enum:
+            - org
+            - board
+        hideVotes:
+          type: boolean
+        voting:
+          type: string
+          enum:
+            - disabled
+            - enabled
+        comments:
+          type: string
+        invitations:
+          enum:
+            - admins
+            - members
+        selfJoin:
+          type: boolean
+        cardCovers:
+          type: boolean
+        isTemplate:
+          type: boolean
+        calendarFeedEnabled:
+          type: boolean
+        background:
+          $ref: '#/components/schemas/TrelloID'
+        backgroundImage:
+          type: string
+          format: uri
+        backgroundTile:
+          type: boolean
+        backgroundBrightness:
+          type: string
+          example: dark
+        backgroundBottomColor:
+          type: string
+          example: '#1e2e00'
+        backgroundTopColor:
+          type: string
+          example: '#ffffff'
+        canBePublic:
+          type: boolean
+        canBeEnterprise:
+          type: boolean
+        canBeOrg:
+          type: boolean
+        canBePrivate:
+          type: boolean
+        canInvite:
+          type: boolean
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+          example: 58dd6dcaf8b86744d3cb4cde
+        name:
+          type: string
+          example: My Collection
+    TokenPermission:
+      type: object
+      properties:
+        idModel:
+          oneOf:
+            - $ref: '#/components/schemas/TrelloID'
+            - type: string
+              enum:
+                - '*'
+        modelType:
+          type: string
+          enum:
+            - board
+            - member
+            - organization
+            - enterprise
+        read:
+          type: boolean
+        write:
+          type: boolean
+    TokenFields:
+      type: string
+      enum:
+        - identifier
+        - idMember
+        - dateCreated
+        - dateExpires
+        - permissions
+    Token:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+          example: 5da728c55235b443c5b97181
+        identifier:
+          type: string
+          example: App Name
+        idMember:
+          $ref: '#/components/schemas/TrelloID'
+          example: 5589c3ea49b40cedc28cf70e
+        dateCreated:
+          type: string
+          format: date-time
+          example: '2019-10-16T14:27:17.304Z'
+        dateExpires:
+          type: string
+          format: date-time
+          example: null
+          nullable: true
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenPermission'
+    TransferrableOrganization:
+      type: object
+      properties:
+        transferrable:
+          type: boolean
+          example: true
+        newBillableMembers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/TrelloID'
+                example: 5ab10be237846c43015f1091
+              fullName:
+                type: string
+                example: Bob Loblaw
+              username:
+                type: string
+                example: bobloblaw
+              initials:
+                type: string
+                example: BL
+              avatarHash:
+                type: string
+                example: fc8faaaee46666a4eb8b626c08933e16
+        restrictedMembers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/TrelloID'
+                example: 5ab10be237846c43015f1091
+              fullName:
+                type: string
+                example: Bob Loblaw
+              username:
+                type: string
+                example: bobloblaw
+              initials:
+                type: string
+                example: BL
+              avatarHash:
+                type: string
+                example: fc8faaaee46666a4eb8b626c08933e16
+    Webhook:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TrelloID'
+          example: 58dd6dcaf8b86744d3cb4cde
+        description:
+          type: string
+          example: Board Webhook
+        idModel:
+          $ref: '#/components/schemas/TrelloID'
+          example: 59cd149051aa57a706962996
+        callbackURL:
+          type: string
+          format: url
+          example: https://mywebhookurl.com/?type=board
+        active:
+          type: boolean
+          example: true
+        consecutiveFailures:
+          type: number
+          example: 0
+        firstConsecutiveFailDate:
+          type: string
+          format: date
+          nullable: true
+          example: null
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+    CFValue:
+      type: object
+      properties:
+        number:
+          type: string
+    customFieldItemValue:
+      type: object
+      properties:
+        value:
+          type: object
+    CommentText:
+      description: Text for a comment
+      properties:
+        text:
+          type: string
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+security:
+  - APIToken: []
+paths:
+  /card/{id}/comment:
+    post:
+      tags: []
+      summary: Add a new comment to a Card
+      description: Add a new comment to a card
+      operationId: postcardsidactionscomments
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Card
+          required: true
+          schema:
+            $ref: '#/components/schemas/TrelloID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentText'
+      deprecated: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+
